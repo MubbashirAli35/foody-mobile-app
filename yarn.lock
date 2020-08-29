@@ -6660,6 +6660,11 @@ react-native-unimodules@~0.10.1:
     unimodules-sensors-interface "~5.2.1"
     unimodules-task-manager-interface "~5.2.1"
 
+react-native-units@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-units/-/react-native-units-1.0.0.tgz#ed83c73bfed33f8753667af9685c4283e95d6e79"
+  integrity sha512-k3rqRSGM0w7FXpYSapDyf6jkUazC9iKfGgAXW8GCmtnFloD/zAIxz4w7T+6pnZP0DloUTYqhSrTAP3QOOySuLw==
+
 react-native-vector-icons@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-7.0.0.tgz#5b92ed363c867645daad48c559e1f99efcfbb813"
