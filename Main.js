@@ -1,22 +1,20 @@
 import React from 'react';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { Text } from 'react-native-elements';
+import { AppLoading } from 'expo'
 import { useFonts, DancingScript_700Bold } from '@expo-google-fonts/dancing-script'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Home from './Screens/Home';
 
 export default function Main() {
-    useFonts({
+    let [fontsLoaded] = useFonts({
         DancingScript_700Bold
     });
 
-    const drawerNavigatorIcon = () => {
-        return(
-            <FontAwesome5 name='bars' solid style={{ marginLeft: 13, fontSize: 20, color: '#ed441a' }} />
-        )
-    }
+    const Drawer = createDrawerNavigator();
 
     const appbarTitle = ( title ) => {
         return(
@@ -26,22 +24,40 @@ export default function Main() {
         )
     }
 
+    const DrawerNavigator = () => {
+        return(
+            <Drawer.Navigator>
+                <Drawer.Screen name='Home' component={HomeStackNavigator} />
+            </Drawer.Navigator>
+        )
+    };
+
     const Stack = createStackNavigator();
 
-    const HomeStackNavigator = () => {
+    const HomeStackNavigator = ({ navigation }) => {
         return(
             <Stack.Navigator initialRouteName='Home' screenOptions={{
                 headerTitleAlign: 'center',
-                headerLeft: drawerNavigatorIcon
+                headerLeft: () => { return(
+                    <FontAwesome5 name='bars' solid style={{ marginLeft: 13, fontSize: 20, color: '#ed441a' }}
+                        onPress={() => navigation.openDrawer()} />
+                ); }
             }}>
                 <Stack.Screen options={{ title: appbarTitle('Foody') }} name='Home' component={Home} />
             </Stack.Navigator>
         )
     }
 
-    return(
-        <NavigationContainer>
-            <HomeStackNavigator />
-        </NavigationContainer>
-    );
+    if(!fontsLoaded) {
+        return(
+            <AppLoading />
+        );
+    }
+    else {
+        return(
+            <NavigationContainer>
+                <DrawerNavigator />
+            </NavigationContainer>
+        );
+    }
 }
