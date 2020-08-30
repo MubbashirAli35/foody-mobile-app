@@ -9,8 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator, 
         DrawerContentScrollView, 
-        DrawerItemList,
-        DrawerItem } from '@react-navigation/drawer';
+        DrawerItemList } from '@react-navigation/drawer';
 
 import Home from './Screens/Home';
 
